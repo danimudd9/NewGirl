@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Girl Fan HQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #F7F3ED;
+  --ink: #1C1A17;
+  --ink-muted: #5A5650;
+  --ink-faint: #9A958E;
+  --gold: #C9963A;
+  --gold-light: #F5E6C8;
+  --loft-blue: #2B4C7E;
+  --loft-blue-light: #E8EFF8;
+  --white: #FFFFFF;
+  --border: rgba(28, 26, 23, 0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(247, 243, 237, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links { display: flex; gap: 2rem; }
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: color 0.15s;
+}
+
+.nav-links a:hover { color: var(--ink); }
+
+/* HERO */
+.hero {
+  position: relative;
+  background: var(--loft-blue);
+  color: var(--white);
+  text-align: center;
+  padding: 5rem 2rem 4rem;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.8);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.hero h1 em { font-style: italic; color: var(--gold); }
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.7);
+  max-width: 480px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+.hero-cta {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.hero-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* SECTION */
+.section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* CHARACTER CARDS — always one row */
+.chars-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+
+.char-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+
+.char-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(28,26,23,0.1);
+}
+
+.char-card.selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-light);
+}
+
+.char-photo-wrap {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--loft-blue-light);
+}
+
+.char-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.char-card:hover .char-photo-wrap img { transform: scale(1.04); }
+
+.char-photo-wrap .char-initials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--loft-blue);
+}
+
+.char-info { padding: 12px 14px; }
+
+.char-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.char-role { font-size: 11px; color: var(--ink-faint); margin-bottom: 8px; }
+
+.char-badge {
+  display: inline-block;
+  background: var(--gold-light);
+  color: #7A5A1E;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+/* QUOTES STRIP */
+.quotes-strip { background: var(--loft-blue); padding: 3rem 0; }
+
+.quotes-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+.quotes-strip .section-title { color: var(--white); }
+.quotes-strip .section-label { color: var(--gold); }
+.quotes-strip .section-header { border-color: rgba(255,255,255,0.15); }
+
+.quotes-carousel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 1.5rem;
+}
+
+.quote-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.quote-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.quote-attr { display: flex; align-items: center; gap: 10px; }
+
+.quote-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.quote-by {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* GENERATOR */
+.generator-section { background: var(--white); }
+
+.generator-wrap { max-width: 680px; margin: 0 auto; }
+
+.gen-char-picker { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+
+.gen-pill {
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  background: var(--cream);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.gen-pill:hover { border-color: var(--gold); color: var(--ink); }
+
+.gen-pill.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.gen-output {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  min-height: 130px;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gen-output .big-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.gen-output .quote-body {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+.gen-output .placeholder { font-size: 15px; color: var(--ink-faint); line-height: 1.6; }
+
+.gen-output .char-credit {
+  margin-top: 1rem;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.quote-counter {
+  font-size: 11px;
+  color: var(--ink-faint);
+  text-align: right;
+  margin-bottom: 0.5rem;
+  min-height: 16px;
+}
+
+.gen-actions { display: flex; gap: 10px; }
+
+.btn-gen {
+  flex: 1;
+  padding: 13px;
+  background: var(--loft-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.btn-gen:hover:not(:disabled) { opacity: 0.88; transform: translateY(-1px); }
+.btn-gen:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-copy-gen {
+  padding: 13px 20px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--ink-muted);
+  transition: background 0.15s;
+}
+
+.btn-copy-gen:hover { background: var(--cream); }
+
+.gen-hint { font-size: 12px; color: var(--ink-faint); text-align: center; margin-top: 0.75rem; }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+footer strong { color: var(--ink-muted); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .chars-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  .chars-grid { grid-template-columns: repeat(2, 1fr); }
+  .quotes-carousel { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">New Girl Fan HQ</a>
+  <div class="nav-links">
+    <a href="#characters">Characters</a>
+    <a href="#quotes">Quotes</a>
+    <a href="#generator">Generator</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Fox · 2011–2018 · 7 Seasons</div>
+  <h1>The <em>loft.</em><br>The gang. The chaos.</h1>
+  <p class="hero-sub">A fan tribute to the show that made us believe in quirky, loud, messy friendship — and True American.</p>
+  <a class="hero-cta" href="#characters">Meet the gang ↓</a>
+</section>
+
+<!-- CHARACTERS -->
+<div id="characters">
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">The residents</span>
+      <h2 class="section-title">The gang</h2>
+    </div>
+    <div class="chars-grid">
+
+      <div class="char-card" data-name="Jess" onclick="selectChar(this)">
+        <div class="char-photo-wrap">
+          <img src="https://static0.srcdn.com/wordpress/wp-content/uploads/2019/07/Jess-New-Girl.jpg?w=1200&h=900&fit=crop"
+               alt="Zooey Deschanel as Jess Day"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="char-initials" style="display:none;">JD</div>
+        </div>
+        <div class="char-info">
+          <div class="char-name">Jess Day</div>
+          <div class="char-role">Middle school teacher · Loft 4D</div>
+          <span class="char-badge">The heart</span>
+        </div>
+      </div>
+
+      <div class="char-card" data-name="Nick" onclick="selectChar(this)">
+        <div class="char-photo-wrap">
+          <img src="https://preview.redd.it/the-sorcery-of-this-show-making-a-character-like-nick-v0-1f51onceybbd1.jpeg?width=640&crop=smart&auto=webp&s=cbe15bdf79159b06bac4a20657932f6b5215ae5b"
+               alt="Jake Johnson as Nick Miller"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="char-initials" style="display:none;">NM</div>
+        </div>
+        <div class="char-info">
+          <div class="char-name">Nick Miller</div>
+          <div class="char-role">Bartender · Aspiring novelist</div>
+          <span class="char-badge">The grouch</span>
+        </div>
+      </div>
+
+      <div class="char-card" data-name="Schmidt" onclick="selectChar(this)">
+        <div class="char-photo-wrap">
+          <img src="https://media.gq.com/photos/57f2d9a9c63464861a63ddf9/16:9/w_2560%2Cc_limit/max-greenfield.jpg"
+               alt="Max Greenfield as Schmidt"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="char-initials" style="display:none;">SC</div>
+        </div>
+        <div class="char-info">
+          <div class="char-name">Schmidt</div>
+          <div class="char-role">Marketing exec · Douchebag jar owner</div>
+          <span class="char-badge">The schemer</span>
+        </div>
+      </div>
+
+      <div class="char-card" data-name="Winston" onclick="selectChar(this)">
+        <div class="char-photo-wrap">
+          <img src="https://preview.redd.it/favorite-quote-scene-with-winston-bishop-v0-4ndqmw7x1ald1.jpeg?auto=webp&s=cb310b8ed14daa0e1c0368405556c22b8d138064"
+               alt="Lamorne Morris as Winston Bishop"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="char-initials" style="display:none;">WB</div>
+        </div>
+        <div class="char-info">
+          <div class="char-name">Winston Bishop</div>
+          <div class="char-role">LAPD officer · Cat dad</div>
+          <span class="char-badge">The wildcard</span>
+        </div>
+      </div>
+
+      <div class="char-card" data-name="Cece" onclick="selectChar(this)">
+        <div class="char-photo-wrap">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOOB-l3bLu-zEVwUs9G0QJdy1dIseIrDJ-wRxWlFU6Rw&s=10"
+               alt="Hannah Simone as Cece"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="char-initials" style="display:none;">CC</div>
+        </div>
+        <div class="char-info">
+          <div class="char-name">Cece Parekh</div>
+          <div class="char-role">Model turned bartender · Jess's person</div>
+          <span class="char-badge">The anchor</span>
+        </div>
+      </div>
+
+      <div class="char-card" data-name="Coach" onclick="selectChar(this)">
+        <div class="char-photo-wrap">
+          <img src="https://media.glamour.com/photos/56957dff8fa134644ec24647/master/w_1600%2Cc_limit/entertainment-2013-10-damon-wayans-new-girl-main.jpg"
+               alt="Damon Wayans Jr. as Coach"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="char-initials" style="display:none;">CO</div>
+        </div>
+        <div class="char-info">
+          <div class="char-name">Coach</div>
+          <div class="char-role">Personal trainer · Loft original</div>
+          <span class="char-badge">The coach</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- QUOTES STRIP -->
+<div id="quotes" class="quotes-strip">
+  <div class="quotes-inner">
+    <div class="section-header">
+      <span class="section-label">As they actually said it</span>
+      <h2 class="section-title">Iconic lines</h2>
+    </div>
+    <div class="quotes-carousel">
+
+      <div class="quote-card">
+        <p class="quote-text">I like getting older. I feel like I'm finally aging into my personality.</p>
+        <div class="quote-attr">
+          <div class="quote-dot" style="background:#2B4C7E;color:#fff;">NM</div>
+          <span class="quote-by">Nick Miller</span>
+        </div>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote-text">I don't deal with exes. They're a part of the past. You burn them swiftly and give their ashes to Poseidon.</p>
+        <div class="quote-attr">
+          <div class="quote-dot" style="background:#2B4C7E;color:#fff;">NM</div>
+          <span class="quote-by">Nick Miller</span>
+        </div>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote-text">I'm like a sexual snowflake. Each night with me is a unique experience.</p>
+        <div class="quote-attr">
+          <div class="quote-dot" style="background:#C9963A;color:#fff;">SC</div>
+          <span class="quote-by">Schmidt</span>
+        </div>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote-text">You were denied a cell phone because you have the credit score of a homeless ghost.</p>
+        <div class="quote-attr">
+          <div class="quote-dot" style="background:#3A7E5A;color:#fff;">WB</div>
+          <span class="quote-by">Winston Bishop</span>
+        </div>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote-text">I might as well call you Bridge to Terabithia, because you make children cry.</p>
+        <div class="quote-attr">
+          <div class="quote-dot" style="background:#7E2B5A;color:#fff;">JD</div>
+          <span class="quote-by">Jess Day</span>
+        </div>
+      </div>
+
+      <div class="quote-card">
+        <p class="quote-text">Keep running or I will murder your family!</p>
+        <div class="quote-attr">
+          <div class="quote-dot" style="background:#1A6B3A;color:#fff;">CO</div>
+          <span class="quote-by">Coach</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE GENERATOR -->
+<div id="generator" class="generator-section">
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Pick a character</span>
+      <h2 class="section-title">Quote generator</h2>
+    </div>
+    <div class="generator-wrap">
+      <p style="font-size:14px;color:var(--ink-muted);margin-bottom:1.5rem;line-height:1.6;">
+        Choose a character and get a random quote from the show — keep clicking for a new one.
+      </p>
+      <div class="gen-char-picker">
+        <button class="gen-pill" data-name="Jess" onclick="pickGenChar(this)">Jess</button>
+        <button class="gen-pill" data-name="Nick" onclick="pickGenChar(this)">Nick</button>
+        <button class="gen-pill" data-name="Schmidt" onclick="pickGenChar(this)">Schmidt</button>
+        <button class="gen-pill" data-name="Winston" onclick="pickGenChar(this)">Winston</button>
+        <button class="gen-pill" data-name="Cece" onclick="pickGenChar(this)">Cece</button>
+        <button class="gen-pill" data-name="Coach" onclick="pickGenChar(this)">Coach</button>
+      </div>
+
+      <div class="quote-counter" id="quoteCounter"></div>
+
+      <div class="gen-output" id="genOutput">
+        <p class="placeholder">Select a character above to get a real quote from the show.</p>
+      </div>
+
+      <div class="gen-actions">
+        <button class="btn-gen" id="genBtn" onclick="showQuote()" disabled>Get a quote</button>
+        <button class="btn-copy-gen" id="copyBtn" onclick="copyGen()">Copy</button>
+      </div>
+      <p class="gen-hint" id="genHint">← choose a character to get started</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Fan tribute site — not affiliated with Fox or the creators of <strong>New Girl</strong>. Built with ♥ and too many True American references.</p>
+</footer>
+
+<script>
+  const QUOTES = {
+    Jess: [
+      "I brake for birds. I rock a lot of polka dots. I have touched glitter in the last 24 hours.",
+      "I'm going to go talk to some food about my feelings.",
+      "I might as well call you Bridge to Terabithia because you make children cry.",
+      "I can't move! I'm wearing a decorative cardigan!",
+      "I'm not able to talk right now. I'm doing a puzzle and I'm in the zone.",
+      "You make me feel like I can do anything. That's either because I love you, or because I've had nine glasses of wine.",
+      "In the real world you can't just do whatever you want whenever you want. That's called being a crazy person.",
+      "I wanna give my nipples a purpose!",
+    ],
+    Nick: [
+      "I like getting older. I feel like I'm finally aging into my personality.",
+      "I don't deal with exes. They're a part of the past. You burn them swiftly and give their ashes to Poseidon.",
+      "I am not a successful adult. I don't eat right, I don't sleep right, and I have no idea how people even pay taxes.",
+      "I fell in love with Jess the minute she walked through that door.",
+      "I am 30 years old and I've peed in every pool I've been in. Every single one.",
+      "I refuse to pay for the wiffy. I am not going to be billed for something I don't even understand.",
+      "I want to kill you because I respect you. I think I'm finally understanding hunting.",
+      "I'm a writer, Jess. We create life.",
+    ],
+    Schmidt: [
+      "I'm like a sexual snowflake. Each night with me is a unique experience.",
+      "Hey M. Night Shyamalan, I've got a twist ending for you: shut up.",
+      "Niiiick.",
+      "Winston, if you think those shoes are brown, what color do you think you are?",
+      "Take care of these shoes. I can get a tetanus shot, but I can't cure damaged suede.",
+      "I can't have this conversation right now. I'm getting a facial in four minutes.",
+      "I have a plan. It's mostly questions, but the middle part is very solid.",
+      "I may not actually be Abraham Lincoln, but I witnessed the emancipation of one black guy tonight — from a terrible relationship.",
+    ],
+    Winston: [
+      "You were denied a cell phone because you have the credit score of a homeless ghost.",
+      "If I were off my rocker, would I take a weekly selfie with my cat?",
+      "You guys are like rubbing alcohol. You sting me in the now, but you save me in the later.",
+      "This is not life experience. This is procrastination at the zoo.",
+      "I just want to do something so big, so scary, that it changes everything. Is that too much to ask?",
+      "I'm pretty sure they call her The Fish because she's tough, but fair. Like a lot of fish I've met.",
+    ],
+    Cece: [
+      "Jess, I love you, but you are the worst person to talk to about normal things.",
+      "Babies wreck you. They literally eat your body.",
+      "Jess, sometimes the only way to figure out what you want is to get a little lost.",
+      "Schmidt is ridiculous. But he's also kind of the greatest person I've ever met.",
+      "I've been modeling since I was twelve. I've seen things. Weird things.",
+      "You can't just text someone a cactus. What does that even mean?",
+    ],
+    Coach: [
+      "You keep making mistakes, Winston!",
+      "I take dumps standing up. I am a man.",
+      "Keep running or I will murder your family!",
+      "I don't know how to talk to women! They're so pretty and I just start yelling!",
+      "Why are you so bad at this? This is the easiest thing in the world and you are so bad at it.",
+      "I believe in you. I just also think you're doing everything wrong.",
+    ],
+  };
+
+  let selectedChar = null;
+  let lastIdx = -1;
+  let currentQuote = '';
+
+  function selectChar(el) {
+    document.querySelectorAll('.char-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    const name = el.dataset.name;
+    const pill = document.querySelector('.gen-pill[data-name="' + name + '"]');
+    if (pill) pickGenChar(pill);
+    document.getElementById('generator').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function pickGenChar(el) {
+    document.querySelectorAll('.gen-pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    selectedChar = el.dataset.name;
+    lastIdx = -1;
+    currentQuote = '';
+    document.getElementById('genBtn').disabled = false;
+    document.getElementById('genBtn').textContent = 'Get a quote';
+    document.getElementById('genHint').textContent = 'Click the button for a random ' + selectedChar + ' quote';
+    document.getElementById('quoteCounter').textContent = '';
+    document.getElementById('genOutput').innerHTML = '<p class="placeholder">Ready — hit the button!</p>';
+  }
+
+  function showQuote() {
+    if (!selectedChar) return;
+    const pool = QUOTES[selectedChar];
+    let idx;
+  idx = (lastIdx + 1) % pool.length;
+    lastIdx = idx;
+    currentQuote = pool[idx];
+    document.getElementById('genOutput').innerHTML =
+      '<div class="big-quote">\u201C</div>' +
+      '<p class="quote-body">' + currentQuote + '</p>' +
+      '<p class="char-credit">\u2014 ' + selectedChar + '</p>';
+    document.getElementById('quoteCounter').textContent = 'Quote ' + (idx + 1) + ' of ' + pool.length;
+    document.getElementById('genBtn').textContent = 'Get another';
+  }
+
+  async function copyGen() {
+    if (!currentQuote) return;
+    try {
+      await navigator.clipboard.writeText('\u201C' + currentQuote + '\u201D \u2014 ' + selectedChar);
+      const btn = document.getElementById('copyBtn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 1600);
+    } catch(e) {}
+  }
+</script>
+</body>
+</html>
