@@ -17,7 +17,7 @@ A fan site for the show New Girl, featuring character profile pages and a quote 
 ## Getting Started
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
+git clone https://github.com/danimudd9/NewGirl.git
 cd YOUR-REPO-NAME
 ```
 
